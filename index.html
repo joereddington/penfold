@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.1/dist/showdown.min.js"></script>
+
+<script>
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var text = rawFile.responseText;
+		converter = new showdown.Converter()
+		html=converter.makeHtml(text)
+		document.getElementById('targetDiv').innerHTML=html;
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+
+function run(){
+readTextFile('input.md');
+}
+
+
+</script>
+
+</HEAD>
+
+<body onload="run()">
+
+<div id="targetDiv"></div>
+
+</body>
