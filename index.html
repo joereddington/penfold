@@ -25,7 +25,13 @@ function readTextFile(file)
 
 
 function run(){
-readTextFile('input.md');
+var urlParams = new URLSearchParams(window.location.search);
+filename=urlParams.get('filename')
+if (filename == null){
+filename="404error.md"
+}
+
+readTextFile(filename);
 }
 
 
