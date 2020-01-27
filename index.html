@@ -5,6 +5,7 @@
 <script>
 function readTextFile(file)
 {
+    console.log("Here")
     var rawFile = new XMLHttpRequest();
     rawFile.open("GET", file, false);
     rawFile.onreadystatechange = function ()
@@ -13,6 +14,7 @@ function readTextFile(file)
         {
             if(rawFile.status === 200 || rawFile.status == 0)
             {
+		console.log("Here")
                 var text = rawFile.responseText;
 		converter = new showdown.Converter()
 		html=converter.makeHtml(text)
